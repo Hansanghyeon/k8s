@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-server-routers
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - host: echo.4t.gg 
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: echo-server
+                port:
+                  number: 80
+  tls:
+    - secretName: tls-secret # tls-cert 에서 지정한 키 이름
+      hosts:
+        - echo.4t.gg

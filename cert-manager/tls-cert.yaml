@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tls-cert
+  namespace: default
+spec:
+  secretName: tls-secret # 마음대로 작성
+  issuerRef:
+    name: tls-issuer # 위에서 지정한 이름
+  commonName: 4t.gg 
+  dnsNames:
+    - 4t.gg 

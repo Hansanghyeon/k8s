@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: tls-issuer # 마음대로 지정합니다
+  namespace: default
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: cert@hyeon.pro 
+    privateKeySecretRef:
+      name: tls-key # 마음대로 지정합니다
+    solvers:
+      - selector: {}
+        http01:
+          ingress:
+            class: traefik
